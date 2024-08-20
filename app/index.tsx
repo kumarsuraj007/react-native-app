@@ -2,8 +2,12 @@ import { View, Text, ImageBackground, SafeAreaView } from "react-native";
 import React from "react";
 import images from "@/constants/Meditation-images";
 import { LinearGradient } from "expo-linear-gradient";
+import CustomButton from "@/components/CustomButton";
+import { useRouter } from "expo-router";
+import AppGradient from "@/components/AppGradient";
 
 const App = () => {
+  const router = useRouter() as any;
   return (
     <View className="flex-1">
       <ImageBackground
@@ -11,11 +15,8 @@ const App = () => {
         resizeMode="cover"
         className="flex-1"
       >
-        <LinearGradient
-          className="flex-1"
-          colors={["rgba(0,0,0,0.4)", "rgba(0,0,0,0.8)"]}
-        >
-          <SafeAreaView className="flex-1 px-1 py-10 justify-between">
+        <AppGradient colors={["rgba(0,0,0,0.4)", "rgba(0,0,0,0.8)"]}>
+          <SafeAreaView className="flex-1 mx-5 my-12 justify-between">
             <View>
               <Text className="text-white text-3xl font-bold text-center">
                 MEDO-MEDITATION APP
@@ -24,8 +25,13 @@ const App = () => {
                 app for your mind and body
               </Text>
             </View>
+            <CustomButton
+              title="Get Started"
+              textStyles="text-black"
+              onPress={() => router.push("/nature-meditate")}
+            />
           </SafeAreaView>
-        </LinearGradient>
+        </AppGradient>
       </ImageBackground>
     </View>
   );
